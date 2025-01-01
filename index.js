@@ -98,10 +98,11 @@ class VeseyncPlugPlatform {
                 newAccessory.addService(Service.Outlet, data.name);
             }
 
+            this.accessories[data.id] = newAccessory;
             this.setService(newAccessory);
             this.api.registerPlatformAccessories("homebridge-vesync-v2", "VesyncPlug", [newAccessory]);
         }
-
+        
         const accessory = this.accessories[data.id];
         this.getInitState(accessory, data);
         this.accessories[data.id] = accessory;
